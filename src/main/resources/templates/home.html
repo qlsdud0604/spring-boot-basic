@@ -1,15 +1,37 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>홈 화면</title>
+</head>
 <body>
-<div class="container">
-    <div>
-        <h1>Hello Spring</h1>
-        <p>회원 기능</p>
-        <p>
-            <a href="/members/new">회원 가입</a>
-            <a href="/members">회원 목록</a>
-        </p>
+<!--Navigation-->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Hello Spring</span>
     </div>
-</div> <!-- /container -->
+</nav>
+
+
+<!--Content-->
+<br>
+<h5>&nbsp;메뉴를 선택해 주세요.</h5>
+<br>
+&nbsp;<a class="btn btn-outline-dark" href="/members/new" role="button">회원 가입</a>
+<a class="btn btn-outline-dark" href="/members" role="button">회원 목록</a>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>
+

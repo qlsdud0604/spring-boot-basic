@@ -1,23 +1,47 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>회원 목록</title>
+</head>
 <body>
-<div class="container">
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>이름</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="member : ${members}">
-                <td th:text="${member.id}"></td>
-                <td th:text="${member.name}"></td>
-            </tr>
-            </tbody>
-        </table>
+<!--Navigation-->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">회원 목록</span>
     </div>
-</div> <!-- /container -->
+</nav>
+
+
+<!--Content-->
+<div class="container" style="width:50%;">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">이름</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>
