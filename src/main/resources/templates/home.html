@@ -9,23 +9,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-    <title>홈 화면</title>
+    <title>메뉴 선택</title>
 </head>
 <body>
 <!--Navigation-->
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Hello Spring</span>
+        <span class="navbar-brand mb-0 h1">메뉴 선택</span>
     </div>
 </nav>
 
 
 <!--Content-->
 <br>
-<h5>&nbsp;메뉴를 선택해 주세요.</h5>
-<br>
-&nbsp;<a class="btn btn-outline-dark" href="/members/new" role="button">회원 가입</a>
-<a class="btn btn-outline-dark" href="/members" role="button">회원 목록</a>
+<div class="container" style="width:50%;">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a class="btn btn-outline-dark" href="/members/new" role="button">회원 가입</a>
+        <a class="btn btn-outline-dark" href="/members" role="button">회원 목록</a>
+    </div>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
