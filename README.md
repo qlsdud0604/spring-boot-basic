@@ -2,8 +2,12 @@
 ---
 ## :mag_right: 목차
 * [스프링 웹 개발 기초](#mag_right-스프링-웹-개발-기초)
+ 
 * [의존성 주입(Dependency Injection)](#mag_right-의존성-주입dependency-injection))
+ 
 * [사용자 입력 데이터의 처리](#mag_right-사용자-입력-데이터의-처리)
+
+* [AOP](#mag_right-aop)
 </br>
 
 ---
@@ -151,4 +155,64 @@ public String create(MemberForm form) {
 ```
 ㆍ 컨트롤러 영역에서 post 방식의 "/members/new" 주소에 해당하는 메서드가 호출된다.   
 ㆍ 매개 변수 form의 멤버 변수명과 사용자 입력 필드의 name 속성 값이 동일하면, form의 각 멤버 변수에 전달된 값들이 자동으로 매핑된다.   
+</br>
+
+---
+## :mag_right: AOP
+**✔️ AOP의 필요성**   
+<img src="https://media.vlpt.us/images/kms9887/post/054686f2-da5f-4253-b676-582a4818555f/image.png" width="50%">
+
+ㆍ 모든 메서드의 호출 시간을 측정하고 싶은 경우를 생각해본다.   
+ㆍ 해결 방법은 위 사진과 같이 각 메서드마다 시간을 측정하는 로직을 작성하는 방법이 있다.   
+ㆍ 이때, 시간을 측정하는 로직과 핵심 비즈니스의 로직이 섞여서 코드가 복잡해지고 유지보수가 어려워진다는 문제점이 발생한다.   
+ㆍ 핵심 관심 사항(핵심 비즈니스 로직)과 공통 관심 사항(시간을 측정하는 로직)을 분리함으로써 이러한 문제점을 해결할 수 있다.   
+</br>
+
+**✔️ AOP를 통한 해결**   
+<img src="https://media.vlpt.us/images/kms9887/post/49ecefcd-246c-48e3-aff4-8331127fb9e3/image.png" width="50%">
+
+ㆍ 위 그림과 같이 핵심 관심 사항(핵심 비즈니스 로직)과 공통 관심 사항(시간을 측정하는 로직)을 분리한다.   
+ㆍ 시간을 측정하는 로직을 공통 로직으로 만든 후 원하는 적용 대상을 선택해 준다.   
+ㆍ 이와 같이 공통으로 처리해야 하는 기능들을 별도로 분리함으로써, 핵심 관심 사항을 깔끔하게 유지할 수 있고 변경이 필요하다면 공통으로 사용되는 로직만 변경해주면 된다.   
+</br>
+
+**✔️ AOP의 동작 과정**   
+<img src="https://user-images.githubusercontent.com/61148914/130013774-ee122e70-3e73-4c49-aadf-6bd11469a1d3.png" width="50%">
+
+ㆍ 위 사진은 AOP를 적용하기 전 각 클래스들의 호출 방식이다.   
+ㆍ 각 클래스들은 Controller, Service, Repository 순으로 차례대로 호출된다.   
+
+<img src="https://media.vlpt.us/images/kms9887/post/212080aa-3615-4282-9ccf-9f1576ad86e1/image.png" width="50%">
+
+ㆍ 위 사진은 AOP를 적용한 후의 각 클래스들의 호출 방식이다.   
+ㆍ 프록시를 생성하여 프록시를 먼저 호출한 후 프록시가 끝나고 나서 비로소 타겟이 호출되는 방식이다.   
+ㆍ 프록시란 타겟을 감싸서 호출을 대신 받는 Wrapping Object이다.   
+</br>
+
+**✔️ AOP 적용**   
+```java
+@Component
+@Aspect
+public class TimeTraceAop {
+
+    @Around("execution(* com.example.springboot..*(..))")
+    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+
+        System.out.println("START : " + joinPoint.toString());
+
+        try {
+            return joinPoint.proceed();
+        } finally {
+            long finish = System.currentTimeMillis();
+
+            long timeMs = finish - start;
+
+            System.out.println("END : " + joinPoint.toString() + " " + timeMs + "ms");
+        }
+    }
+}
+```
+ㆍ "@Around" 애너테이션을 통해 타게팅할 범위를 설정해준다. 위 코드에서는 springboot 패키지 내부 전체를 대상으로 타게팅을 한 것이다.   
+ㆍ joinPoint.proceed( ) 메서드를 이용하여, AOP가 적용된 다음 타겟을 호출함으로써 시간 측정을 한다.   
 </br>
