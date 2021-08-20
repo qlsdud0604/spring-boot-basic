@@ -8,6 +8,8 @@
 * [사용자 입력 데이터의 처리](#mag_right-사용자-입력-데이터의-처리)
 
 * [AOP](#mag_right-aop)
+
+* [최종 결과물](#mag_right-최종-결과물)
 </br>
 
 ---
@@ -215,4 +217,26 @@ public class TimeTraceAop {
 ```
 ㆍ "@Around" 애너테이션을 통해 타게팅할 범위를 설정해준다. 위 코드에서는 springboot 패키지 내부 전체를 대상으로 타게팅을 한 것이다.   
 ㆍ joinPoint.proceed( ) 메서드를 이용하여, AOP가 적용된 다음 타겟을 호출함으로써 시간 측정을 한다.   
+</br>
+
+---
+## :mag_right: 최종 결과물
+**✔️ 메뉴 선택 화면**   
+<img src="https://user-images.githubusercontent.com/61148914/130189361-c5dc7e2f-2af5-49a3-9632-8f448f801cb0.png" width="50%">
+
+ㆍ 메뉴 선택 화면에서 회원 가입 또는 회원 목록 기능을 선택할 수 있다.   
+</br>
+
+**✔️ 회원 가입 화면**   
+
+<img src="https://user-images.githubusercontent.com/61148914/130189498-15770732-2b5b-4505-9ef3-c0c4093f3100.png" width="50%">
+
+ㆍ 회원 가입 화면에서 본인의 이름을 입력하여 회원가입을 진행할 수 있다.   
+</br>
+
+**✔️ 회원 목록 화면**   
+
+<img src="https://user-images.githubusercontent.com/61148914/130189765-198f5633-7677-4121-af92-128f11cba1a9.png" width="50%">
+
+ㆍ 회원 목록 화면에서 회원 가입이 된 회원 목록들을 확인할 수 있다.   
 </br>
