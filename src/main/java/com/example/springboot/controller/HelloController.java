@@ -49,4 +49,12 @@ public class HelloController {
             this.name = name;
         }
     }
+
+    @ResponseBody
+    @GetMapping("test")
+    public String TestController() {
+        System.out.println("Hello Filter");
+
+        return "Hello";
+    }
 }
