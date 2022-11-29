@@ -51,4 +51,4 @@
 </br>
 
 ## 링크
-* Tistory : https://qlsdud0604.tistory.com/category/Spring%20Boot/Spring%20Boot
+* Tistory : https://qlsdud0604.tistory.com/category/Framework/Spring%20Boot
